@@ -30,18 +30,7 @@ public class InhalersReader extends ObjetoReader {
 		return readData;
 	}
 
-	protected StringBuffer reader(JsonReader reader) throws IOException {
-		StringBuffer inhalerData = new StringBuffer();
-		reader.beginArray();
-		while (reader.hasNext()) {
-			reader.beginObject();
-			inhalerData.append(entryReader(reader)).append("\n");
-			reader.endObject();
-		}
-		inhalerData.append("\n");
-		reader.endArray();
-		return inhalerData;
-	}
+	
 
 	protected String entryReader(JsonReader reader) throws IOException {
 		String inhalerName = null;

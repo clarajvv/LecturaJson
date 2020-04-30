@@ -30,19 +30,6 @@ public class PhysiotherapiesReader extends ObjetoReader {
 		return readData;
 	}
 
-	protected StringBuffer reader(JsonReader reader) throws IOException {
-		StringBuffer physioData = new StringBuffer();
-		reader.beginArray();
-		while (reader.hasNext()) {
-			reader.beginObject();
-			physioData.append(entryReader(reader)).append("\n");
-			reader.endObject();
-		}
-		physioData.append("\n");
-		reader.endArray();
-		return physioData;
-	}
-
 	protected String entryReader(JsonReader reader) throws IOException {
 		String physioName = null;
 		String physioImage = null;

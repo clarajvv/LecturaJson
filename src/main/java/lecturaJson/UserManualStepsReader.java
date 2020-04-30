@@ -20,7 +20,7 @@ public class UserManualStepsReader extends ObjetoReader {
 	}
 
 	protected StringBuffer read(JsonReader reader, StringBuffer readData, String name) throws IOException {
-		
+
 		if (name.equals(MANUAL_STEPS_TAGNAME)) {
 			readData.append(reader(reader)).append("\n");
 		} else if (sig != null) {
@@ -30,19 +30,6 @@ public class UserManualStepsReader extends ObjetoReader {
 			System.err.println("Category " + name + " not processed.");
 		}
 		return readData;
-	}
-
-	protected StringBuffer reader(JsonReader reader) throws IOException {
-		StringBuffer mStepsData = new StringBuffer();
-		reader.beginArray();
-		while (reader.hasNext()) {
-			reader.beginObject();
-			mStepsData.append(entryReader(reader)).append("\n");
-			reader.endObject();
-		}
-		mStepsData.append("\n");
-		reader.endArray();
-		return mStepsData;
 	}
 
 	protected String entryReader(JsonReader reader) throws IOException {

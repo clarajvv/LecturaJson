@@ -27,19 +27,6 @@ public class MedicineReader extends ObjetoReader {
 		return readData;
 	}
 
-	protected StringBuffer reader(JsonReader reader) throws IOException {
-		StringBuffer medicineData = new StringBuffer();
-		reader.beginArray();
-		while (reader.hasNext()) {
-			reader.beginObject();
-			medicineData.append(entryReader(reader)).append("\n");
-			reader.endObject();
-		}
-		medicineData.append("\n");
-		reader.endArray();
-		return medicineData;
-	}
-
 	protected String entryReader(JsonReader reader) throws IOException {
 		String medName = null;
 		while (reader.hasNext()) {

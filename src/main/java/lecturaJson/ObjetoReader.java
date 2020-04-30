@@ -15,11 +15,19 @@ public abstract class ObjetoReader {
 		return sig.read(reader, readData, name);
 	}
 
-	protected abstract StringBuffer reader(JsonReader reader) throws IOException;
+	protected StringBuffer reader(JsonReader reader) throws IOException {
+		StringBuffer objetoData = new StringBuffer();
+		reader.beginArray();
+		while (reader.hasNext()) {
+			reader.beginObject();
+			objetoData.append(entryReader(reader)).append("\n");
+			reader.endObject();
+		}
+		objetoData.append("\n");
+		reader.endArray();
+		return objetoData;
+	}
 
 	protected abstract String entryReader(JsonReader reader) throws IOException;
 
 }
-
-
-

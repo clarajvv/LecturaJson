@@ -27,19 +27,6 @@ public class PosologiesReader extends ObjetoReader {
 		return readData;
 	}
 
-	protected StringBuffer reader(JsonReader reader) throws IOException {
-		StringBuffer posolData = new StringBuffer();
-		reader.beginArray();
-		while (reader.hasNext()) {
-			reader.beginObject();
-			posolData.append(entryReader(reader)).append("\n");
-			reader.endObject();
-		}
-		posolData.append("\n");
-		reader.endArray();
-		return posolData;
-	}
-
 	protected String entryReader(JsonReader reader) throws IOException {
 		String posolDesc = null;
 		while (reader.hasNext()) {

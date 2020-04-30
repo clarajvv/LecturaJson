@@ -32,19 +32,6 @@ public class RescueMedicinePresentationsReader extends ObjetoReader {
 		return readData;
 	}
 
-	protected StringBuffer reader(JsonReader reader) throws IOException {
-		StringBuffer rescueMedicinePresentationData = new StringBuffer();
-		reader.beginArray();
-		while (reader.hasNext()) {
-			reader.beginObject();
-			rescueMedicinePresentationData.append(entryReader(reader)).append("\n");
-			reader.endObject();
-		}
-		rescueMedicinePresentationData.append("\n");
-		reader.endArray();
-		return rescueMedicinePresentationData;
-	}
-
 	// Parses the contents of a rescue medicine presentation entry
 	protected String entryReader(JsonReader reader) throws IOException {
 		String medRef = null;

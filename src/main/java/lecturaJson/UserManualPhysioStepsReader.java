@@ -32,19 +32,6 @@ public class UserManualPhysioStepsReader extends ObjetoReader {
 		return readData;
 	}
 
-	protected StringBuffer reader(JsonReader reader) throws IOException {
-		StringBuffer mPhysioData = new StringBuffer();
-		reader.beginArray();
-		while (reader.hasNext()) {
-			reader.beginObject();
-			mPhysioData.append(entryReader(reader)).append("\n");
-			reader.endObject();
-		}
-		mPhysioData.append("\n");
-		reader.endArray();
-		return mPhysioData;
-	}
-
 	protected String entryReader(JsonReader reader) throws IOException {
 		String stepTitle = null;
 		String stepImage = null;

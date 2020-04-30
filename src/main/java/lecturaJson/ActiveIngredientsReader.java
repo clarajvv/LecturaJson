@@ -28,18 +28,7 @@ public class ActiveIngredientsReader extends ObjetoReader {
 		return readData;
 	}
 
-	protected StringBuffer reader(JsonReader reader) throws IOException {
-		StringBuffer ingData = new StringBuffer();
-		reader.beginArray();
-		while (reader.hasNext()) {
-			reader.beginObject();
-			ingData.append(entryReader(reader)).append("\n");
-			reader.endObject();
-		}
-		ingData.append("\n");
-		reader.endArray();
-		return ingData;
-	}
+	
 
 	protected String entryReader(JsonReader reader) throws IOException {
 		// reader.require(XmlPullParser.START_TAG, ns, SINGLE_ELEMENT_TAGNAME);
